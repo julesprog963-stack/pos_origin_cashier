@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="pos_origin_cashier_pos_order_form" model="ir.ui.view">
+        <field name="name">pos.order.form.origin.cashier</field>
+        <field name="model">pos.order</field>
+        <field name="inherit_id" ref="pos_hr.pos_order_form_inherit"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='employee_id']" position="after">
+                <field name="origin_cashier_id" widget="many2one_avatar_employee" readonly="1" options="{'no_create': True}"/>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="pos_origin_cashier_pos_order_tree" model="ir.ui.view">
+        <field name="name">pos.order.tree.origin.cashier</field>
+        <field name="model">pos.order</field>
+        <field name="inherit_id" ref="pos_hr.view_pos_order_tree_inherit"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='employee_id']" position="after">
+                <field name="origin_cashier_id" widget="many2one_avatar_employee" optional="show" readonly="1"/>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="pos_origin_cashier_pos_order_search" model="ir.ui.view">
+        <field name="name">pos.order.search.origin.cashier</field>
+        <field name="model">pos.order</field>
+        <field name="inherit_id" ref="pos_hr.pos_order_list_select_inherit"/>
+        <field name="arch" type="xml">
+            <xpath expr="//group[filter[@name='session']]" position="inside">
+                <filter string="Cashier origen" name="group_origin_cashier" domain="[]" context="{'group_by': 'origin_cashier_id'}"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>
