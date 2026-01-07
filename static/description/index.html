@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <title>POS Origin Cashier</title>
+    <style>
+        body { font-family: Arial, sans-serif; color: #4a4a4a; margin: 0; padding: 40px; background: #f7f7f7; }
+        .card { max-width: 880px; margin: 0 auto; background: #fff; border-radius: 12px; box-shadow: 0 6px 18px rgba(0,0,0,0.06); padding: 32px; }
+        .header { display: flex; align-items: center; gap: 20px; }
+        .header img { width: 96px; height: 96px; border-radius: 16px; }
+        h1 { margin: 0; font-size: 26px; color: #323232; }
+        h2 { margin: 24px 0 8px; font-size: 18px; color: #323232; }
+        p { line-height: 1.5; margin: 0 0 12px; }
+        ul { padding-left: 20px; margin: 8px 0 16px; }
+        li { margin-bottom: 6px; }
+        .badge { display: inline-block; padding: 6px 10px; border-radius: 8px; background: #eceefe; color: #5145cd; font-weight: 600; font-size: 12px; }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <div class="header">
+            <img src="icon.png" alt="POS Origin Cashier" />
+            <div>
+                <div class="badge">Odoo 17 · POS + POS HR</div>
+                <h1>POS Origin Cashier</h1>
+                <p>Persistencia del cajero/empleado origen (PIN) en las órdenes de Punto de Venta. Se fija al enviar la orden y nunca se sobrescribe, incluso si otro cajero cobra.</p>
+            </div>
+        </div>
+
+        <h2>Características</h2>
+        <ul>
+            <li>Campo <strong>Origin Cashier</strong> (hr.employee) en órdenes POS y reporte analítico.</li>
+            <li>Set-once al enviar: no cambia aunque otro usuario cierre el ticket.</li>
+            <li>Group By “Cashier origen” en Análisis de órdenes.</li>
+            <li>Sin pantallas ni botones nuevos; usa el flujo nativo de Enviar/Guardar.</li>
+        </ul>
+
+        <h2>Cómo usar</h2>
+        <ul>
+            <li>Requiere módulo <strong>pos_hr</strong> (login por PIN activo en POS).</li>
+            <li>Crear orden en POS &rarr; Enviar/Guardar &rarr; Origin Cashier se guarda con el cajero activo.</li>
+            <li>Cobrar con otro cajero no modifica el valor almacenado.</li>
+            <li>En backend: <em>POS &gt; Órdenes</em> muestra el campo en árbol y formulario.</li>
+            <li>En <em>POS &gt; Reportes &gt; Análisis de órdenes</em>, usar Group By “Cashier origen”.</li>
+        </ul>
+    </div>
+</body>
+</html>
